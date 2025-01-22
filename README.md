@@ -62,7 +62,8 @@ project-name/
 Rayen Ben Moussa - BCIT CST Student with a passion for creating frontend applications. Fun fact: Loves nearly any type of competitive sport.
 - **Your Name** - BCIT CST Student with a passion for creating user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
 - **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
-Pierre - The greatest person of all time!
+Pierre - The greatest person of all time! I am a CST student.
+
 
 ---
 
