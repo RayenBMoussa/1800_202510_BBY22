@@ -67,6 +67,8 @@ Pierre - The greatest person of all time! I am a CST student.
 
 Tony Chen - BCIT CST Student, interested in computer science, data analysis, and project management.
 
+Ayush - I like to play volleyball.
+
 
 ---
 
