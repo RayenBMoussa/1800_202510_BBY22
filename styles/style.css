@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @media screen and (max-width:720px) {
     #header {
         background-color: #D9D9D9;
@@ -13,3 +14,11 @@
 *{
     margin: 0;
 }
+=======
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+}
+>>>>>>> 7e87bf5627343abd640a0e1c4ffd7361ad9dfa85
