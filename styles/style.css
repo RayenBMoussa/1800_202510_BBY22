@@ -1,3 +1,27 @@
+@media screen and (max-width:720px) {
+    #header {
+        background-color: #D9D9D9;
+        padding: 1em;
+        display: flex;
+        justify-content: space-between;
+    }
+    #header-icons{
+        display: flex;
+        gap: 1em;
+    }
+}
+*{
+    margin: 0;
+}
+.navHeader {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+    padding: 4px;
+}
+
 .nav {
     grid-row: 3 / 4;
     grid-column: 1 / span 4;
