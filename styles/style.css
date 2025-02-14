@@ -13,6 +13,17 @@
 *{
     margin: 0;
 }
+
+#banner {
+    margin: auto;
+    
+}
+
+#logo {
+    width: 100%;
+    margin: auto;
+}
+
 .navHeader {
     display: flex;
     flex-direction: row;
