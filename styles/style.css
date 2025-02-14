@@ -18,6 +18,7 @@
     flex-direction: row;
     justify-items: center;
     align-items: center;
+    padding: 5px;
     padding: 4px;
 }
 
@@ -29,4 +30,4 @@
     justify-items: center;
     align-items: center;
 }
->>>>>>> 7e87bf5627343abd640a0e1c4ffd7361ad9dfa85
+
