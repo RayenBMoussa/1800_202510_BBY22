@@ -1,9 +1,3 @@
-.container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, auto);
-}
-
 .nav {
     grid-row: 3 / 4;
     grid-column: 1 / span 4;
@@ -12,3 +6,4 @@
     justify-items: center;
     align-items: center;
 }
+>>>>>>> 7e87bf5627343abd640a0e1c4ffd7361ad9dfa85
