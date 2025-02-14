@@ -9,19 +9,23 @@
         display: flex;
         gap: 1em;
     }
-}
+
 *{
     margin: 0;
 }
+#bigContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5em;
+}
 
 #banner {
-    margin: auto;
-    
 }
 
 #logo {
+    display: flex;
+    justify-content: center;
     width: 100%;
-    margin: auto;
 }
 
 .navHeader {
@@ -38,4 +42,5 @@
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     align-items: center;
+}
 }
