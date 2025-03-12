@@ -21,15 +21,6 @@
 }
 body{
     height: 100vh;
-    font-family: "Roboto", serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
-}
-body{
-    height: 100vh;
 }
 #bigContainer{
     display: flex;
@@ -61,17 +52,6 @@ body{
     gap: 1em;
     margin:0 auto;
 }
-.underMap{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: end;
-    font-weight: 600;
-    cursor: pointer;
-}
-#mapText:hover{
-    text-decoration: underline;
-}
 
 #logo {
     display: flex;
@@ -89,20 +69,11 @@ body{
     background-color:lightgray;
     width: 100%;
 }
-.msg{
+/* .msg{
     padding: 1em;
     border-bottom: 2px solid black;
-#msgContainer{
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    width: 70%;
     gap: 1em;
-}
-#messages{
-    background-color:lightgray;
-    width: 100%;
-}
+} */
 .msg{
     padding: 1em;
     border-bottom: 2px solid black;
@@ -135,20 +106,6 @@ body{
     background-color: red;
 }
 
-    background-color:lightgray;
-    padding: 0.5em;
-}
-.navItems{
-    cursor: pointer;
-    padding: 0.2em;
-}
-.navItems:hover{
-    background-color: rgb(231, 229, 229);
-}
-#redCircle{
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: red;
-}
+    /* background-color:lightgray;
+    padding: 0.5em; */
 }
