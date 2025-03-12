@@ -1,5 +1,4 @@
 @media screen and (max-width:480px) {
-@media screen and (max-width:480px) {
     #header {
         background: linear-gradient(to bottom right, #ee8b4d, #020024);
         padding: 1em;
@@ -151,6 +150,4 @@ body{
     height: 10px;
     border-radius: 50%;
     background-color: red;
-}
-
 }
