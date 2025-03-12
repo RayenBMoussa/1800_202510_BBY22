@@ -1,0 +1,73 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+*{
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    height: 100vh;
+}
+#logo {
+    width: 150px;
+    height: auto;
+}
+#logo > img{
+    width: 100%;
+}
+#landingImg{
+    max-width: 300px;
+    width: 100%;
+}
+#teamImg {
+   width: 100%;
+}
+#bannerText{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+}
+#buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+#login{
+    padding: 1em;
+    width:  18em;
+    border-radius: 0.5em;
+    background: linear-gradient(to bottom right, #ee8b4d, #29292d);
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+#signUp{
+    padding: 1em;
+    width:  18em;
+    border-radius: 0.5em;
+    background: linear-gradient(to bottom right, #fdeee5, #29292d);
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+#welcome{
+    color: #d7641c;
+}
+.smallBanner{
+    font-size: 10.5pt;
+    font-weight: 600;
+}
+
+@media screen and (min-width:380px){
+    .smallBanner{
+        font-size: 12pt;
+        font-weight: 600;
+    }
+}
