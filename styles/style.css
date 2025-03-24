@@ -5,106 +5,123 @@
         display: flex;
         justify-content: space-between;
     }
-    #header-icons{
+
+    #header-icons {
         display: flex;
         gap: 1em;
     }
 
-*{
-    margin: 0;
-    font-family: "Roboto", serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
-}
-body{
-    height: 100vh;
-}
-#bigContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    justify-content: space-between;
-    height: 100%;
-}
+    * {
+        margin: 0;
+        font-family: "Roboto", serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 100;
+        box-sizing: border-box;
+    }
 
-#banner {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    margin:0 auto;
-}
-.underMap{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: end;
-    font-weight: 600;
-    cursor: pointer;
-}
-#mapText:hover{
-    text-decoration: underline;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    margin:0 auto;
-}
+    body {
+        height: 100vh;
+        box-sizing: border-box;
+    }
 
-#logo {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-#msgContainer{
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    gap: 1em;
-}
-#messages{
-    background-color:lightgray;
-    width: 100%;
-}
-/* .msg{
+    #bigContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    #banner {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        margin: 0 auto;
+    }
+
+    .underMap {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: end;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    #mapText:hover {
+        text-decoration: underline;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        margin: 0 auto;
+    }
+    .mapContainer {
+        width: 340px;
+        height: 180px;
+    }
+    #map{
+        width: 100%;
+        height: 100%;
+    }
+    #logo {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    #msgContainer {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        gap: 1em;
+    }
+
+    #messages {
+        background-color: lightgray;
+        width: 100%;
+    }
+
+    /* .msg{
     padding: 1em;
     border-bottom: 2px solid black;
     gap: 1em;
 } */
-.msg{
-    padding: 1em;
-    border-bottom: 2px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1em;
-    justify-content: space-between;
-    gap: 1em;
-}
+    .msg {
+        padding: 1em;
+        border-bottom: 2px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1em;
+        justify-content: space-between;
+        gap: 1em;
+    }
 
-.nav {
-    display: flex;
-    display: flex;
-    justify-content: space-between;
-    background: linear-gradient(to bottom right, #ee8b4d, #020024);
-    padding: 0.5em;
-}
-.navItems{
-    cursor: pointer;
-    padding: 0.2em;
-}
-.navItems:hover{
-    background-color: rgb(231, 229, 229);
-}
-#redCircle{
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: red;
-}
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        background: linear-gradient(to bottom right, #ee8b4d, #020024);
+        padding: 0.5em;
+    }
+
+    .navItems {
+        cursor: pointer;
+        padding: 0.2em;
+    }
+
+    .navItems:hover {
+        background-color: rgb(231, 229, 229);
+    }
+
+    #redCircle {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: red;
+    }
 
     /* background-color:lightgray;
     padding: 0.5em; */
