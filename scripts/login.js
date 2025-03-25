@@ -4,7 +4,7 @@ import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/fir
 const successMsg = localStorage.getItem("msg");
 const msgHolder = document.getElementById("successMsg");
 const email = document.getElementById("email");
-
+const errorHolder = document.getElementById("errorMsg");
 if (successMsg) {
   msgHolder.innerHTML = successMsg;
   localStorage.removeItem("msg"); // Remove message immediately to prevent persistence
@@ -41,8 +41,11 @@ submit.addEventListener("click", function (event) {
       // ...
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      errorHolder.innerHTML = "Incorrect email or password"; 
+      errorHolder.style.display = "block";
+      setTimeout(() => {
+        errorHolder.style.display = "none"; // Hide message after 5 seconds
+      }, 5000);
       console.log(error)
     });
 })

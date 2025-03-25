@@ -90,3 +90,9 @@ body{
     padding: 0.5em;
     background-color: rgb(137, 203, 137,50%);
 }
+#errorMsg{
+    border-radius: 1em;
+    border: rgb(183, 55, 26) solid 2px;
+    padding: 0.5em;
+    background-color: rgba(230, 117, 117, 0.5);
+}

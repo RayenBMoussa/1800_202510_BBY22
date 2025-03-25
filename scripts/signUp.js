@@ -15,7 +15,6 @@ var firebaseConfig = {
   appId: "1:538587405788:web:8fe69a84f0e8767f138319"
 };
 
-// ✅ Ensure Firebase is initialized BEFORE using auth and firestore
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
@@ -24,22 +23,29 @@ if (!firebase.apps.length) {
 var auth = firebase.auth();
 var db = firebase.firestore();
 
-// ✅ Initialize FirebaseUI properly
 var ui = new firebaseui.auth.AuthUI(auth);
 
-// ✅ Sign Up Button Event Listener
-document.getElementById("submit").addEventListener("click", function(event) {
+document.getElementById("submit").addEventListener("click", function (event) {
   event.preventDefault(); // Prevent form submission
 
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
+  var fullName = document.getElementById("fullname").value;
 
   auth.createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-          localStorage.setItem("msg", "Account created successfully!!!");
-          window.location.href = "login.html"; // Redirect to login page
+    .then((userCredential) => {
+      const user = userCredential.user;
+      return db.collection("Users").doc(user.uid).set({
+        email: user.email,
+        name: fullName,
+        code: "1234"
       })
-      .catch((error) => {
-          console.log("Error signing up:", error.message);
-      });
+    })
+    .then(() => {
+      localStorage.setItem("msg", "Account created successfully!!!");
+      window.location.href = "login.html"; // Redirect to login page
+    })
+    .catch((error) => {
+      console.log("Error signing up:", error.message);
+    });
 });

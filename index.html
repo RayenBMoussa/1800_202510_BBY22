@@ -23,19 +23,21 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
 
 </head>
 
 <body>
-    <div id="bigContainer">
-        <div id="header">
-            <img style="height:3em;" src="images/intimoLogo.png" alt="">
-            <div id="header-icons">
-                <img src="./images/Vector.svg" width="40" alt="vector">
-                <img src="./images/notification.svg" width="40" alt="notification">
-            </div>
+
+    <div id="header">
+        <img style="height:3em;" src="images/intimoLogo.png" alt="">
+        <div id="header-icons">
+            <img src="./images/Vector.svg" width="40" alt="vector">
+            <img src="./images/notification.svg" width="40" alt="notification">
         </div>
+    </div>
+    <div id="middle">
         <div id="banner">
             <!-- <div id="logo">
                 <img src="./images/maps.png">
@@ -54,6 +56,30 @@
             </div>
         </div>
         <div id="msgContainer">
+            <div id="numberNetworks">
+                <span style="font-size: 20pt;">0</span>
+                <span>My networks</span>
+            </div>
+            <div id="firstColumn">
+                <div style="display: flex; flex-direction: column; gap: 1em;">
+                    <div class="alignIcons" id="createNetwork">
+                        <img src="./images/create-svgrepo-com.svg" width="20" alt="">
+                        <span>Create a network</span>
+                    </div>
+                    <div class="alignIcons" style="margin: auto;">
+                        <img src="./images/settings (1).svg" width="25" alt="">
+                        <span>Configure network</span>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <div class="alignIcons">
+                        <img src="./images/join-class.svg" width="25">
+                        <span>Join a network</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div id="msgContainer">
             <div id="messages">
                 <div class="msg">
                     <img src="./images/User.svg" width="40" alt="">
@@ -75,32 +101,23 @@
                     <div>sent you a message</div>
                     <span id="redCircle"></span>
                 </div>
-            </div>
-            <div class="underMap">
-                <div id="mapText">
-                    See more
-                </div>
-                <div>
-                    <p>&rarr;</p>
-                </div>
-
-            </div>
-        </div>
-        <footer class="nav">
-            <div id="home" class="navItems">
-                <img src="images/house.svg" width="40" alt="House Icon">
-            </div>
-            <div id="group" class="navItems">
-                <img src="images/group.svg" width="40" alt="Group Icon">
-            </div>
-            <div id="preferences" class="navItems">
-                <img src="images/preference.svg" width="40" alt="Preferences Icon">
-            </div>
-            <div id="chat" class="navItems">
-                <img src="images/chat.svg" width="40" alt="Chat Icon">
-            </div>
-        </footer>
+            </div>-->
     </div>
+    <footer class="nav">
+        <div id="home" class="navItems">
+            <img src="images/house.svg" width="40" alt="House Icon">
+        </div>
+        <div id="group" class="navItems">
+            <img src="images/group.svg" width="40" alt="Group Icon">
+        </div>
+        <div id="preferences" class="navItems">
+            <img src="images/preference.svg" width="40" alt="Preferences Icon">
+        </div>
+        <div id="chat" class="navItems">
+            <img src="images/chat.svg" width="40" alt="Chat Icon">
+        </div>
+    </footer>
+
 
     <!-- Navigation bar goes here -->
 
@@ -123,8 +140,22 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
+    <div id="popup" class="popup-container">
+        <div class="popup-content">
+            <h2>Create a Network</h2>
+            <input type="text" id="networkName" placeholder="Enter network name">
+            <div class="popup-buttons">
+                <button id="createBtn">Create</button>
+                <button id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
     <script src="./scripts/firebaseAPI_BBY22.js"></script>
     <script src="./scripts/map.js"></script>
+    <script src="./scripts/popup.js"></script>
+
+    
+
 
 </body>
 
