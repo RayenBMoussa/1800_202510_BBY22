@@ -97,44 +97,159 @@ createBtn.addEventListener("click", async () => {
   }
 });
 
-// Handle join button click
-joinBtn.addEventListener("click", async () => {
-  // Assume 'firebase' has already been initialized
-  const codeValue = document.getElementById("networkCode").value; // Replace with the actual code value you're searching for
+// // Function to update the user's document with the joined network's ID
+// async function updateUserNetworks(networkId, user) {
+//     try {
+//       await db.collection("users").doc(user.uid).update({
+//         myNetworks: firebase.firestore.FieldValue.arrayUnion(networkId)
+//       });
+//       console.log("User document updated with network:", networkId);
+//     } catch (error) {
+//       console.error("Error updating user's networks:", error);
+//       alert("An error occurred while updating your networks.");
+//     }
+//   }
 
-  firebase
-    .firestore()
-    .collection("networks")
-    .where("code", "==", codeValue)
-    .get()
-    .then((querySnapshot) => {
+// Function to update the user's document with the joined network's ID
+async function updateUserNetworks(networkId, user) {
+    try {
+      // Using set with merge:true ensures that the document is created if it doesn't exist,
+      // and the 'myNetworks' field is added (or updated) using arrayUnion.
+      await db.collection("Users").doc(user.uid).set(
+        {
+          myNetworks: firebase.firestore.FieldValue.arrayUnion(networkId)
+        },
+        { merge: true }
+      );
+      console.log("User document updated with network ID:", networkId);
+    } catch (error) {
+      console.error("Error updating user's networks:", error);
+      alert("An error occurred while updating your networks.");
+    }
+  }
+
+// Handle join button click
+// joinBtn.addEventListener("click", async () => {
+//   // Assume 'firebase' has already been initialized
+//   const codeValue = document.getElementById("networkCode").value; // Replace with the actual code value you're searching for
+
+//   firebase
+//     .firestore()
+//     .collection("networks")
+//     .where("code", "==", codeValue)
+//     .get()
+//     .then((querySnapshot) => {
+//       if (querySnapshot.empty) {
+//         console.log("No matching documents.");
+//         return;
+//       }
+//       querySnapshot.forEach((doc) => {
+//         // Extract the ownerID from the document data
+//         const ownerID = doc.data().owner;
+//         console.log("OwnerID:", ownerID);
+//       });
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching code:", error);
+//     });
+
+//   const networkCode = document.getElementById("networkCode").value.trim();
+
+//   if (networkCode === "") {
+//     alert("Please enter a network code.");
+//     return;
+//   }
+
+//   const user = firebase.auth().currentUser;
+//   if (!user) {
+//     alert("You need to be logged in to create a network.");
+//     return;
+//   }
+// });
+
+// Function to join a network by code and update the network document
+// Function to join a network by code and update both the network and user documents
+async function joinNetworkWithCode(networkCode, user) {
+    try {
+      // Query the networks collection where the code matches the input
+      const querySnapshot = await db
+        .collection("networks")
+        .where("code", "==", networkCode)
+        .get();
+  
       if (querySnapshot.empty) {
-        console.log("No matching documents.");
+        alert("No network found with the provided code.");
         return;
       }
-      querySnapshot.forEach((doc) => {
-        // Extract the ownerID from the document data
-        const ownerID = doc.data().owner;
-        console.log("OwnerID:", ownerID);
+  
+      // For each matching network (usually there is only one), update the network and user documents.
+      querySnapshot.forEach(async (docSnapshot) => {
+        // Update the network document by adding the user's UID to the memberIds array.
+        await db.collection("networks").doc(docSnapshot.id).update({
+          memberIds: firebase.firestore.FieldValue.arrayUnion(user.uid),
+        });
+  
+        // Optionally, add the joiner to the network's members subcollection with additional info.
+        await db
+          .collection("networks")
+          .doc(docSnapshot.id)
+          .collection("members")
+          .doc(user.uid)
+          .set({
+            name: user.displayName || "Unknown",
+            email: user.email,
+            joinedAt: firebase.firestore.FieldValue.serverTimestamp(),
+          });
+  
+        // Update the user's document: add this network's document ID to the myNetworks field.
+        await updateUserNetworks(docSnapshot.id, user);
+  
+        alert("Joined network successfully!");
+        popupJoin.style.display = "none";
       });
-    })
-    .catch((error) => {
-      console.error("Error fetching code:", error);
-    });
-
-  const networkCode = document.getElementById("networkCode").value.trim();
-
-  if (networkCode === "") {
-    alert("Please enter a network code.");
-    return;
+    } catch (error) {
+      console.error("Error joining network:", error);
+      alert("An error occurred while joining the network.");
+    }
   }
 
-  const user = firebase.auth().currentUser;
-  if (!user) {
-    alert("You need to be logged in to create a network.");
-    return;
-  }
-});
+// // Updated join button click handler
+// joinBtn.addEventListener("click", async () => {
+//   const networkCode = document.getElementById("networkCode").value.trim();
+
+//   if (networkCode === "") {
+//     alert("Please enter a network code.");
+//     return;
+//   }
+
+//   const user = firebase.auth().currentUser;
+//   if (!user) {
+//     alert("You need to be logged in to join a network.");
+//     return;
+//   }
+
+//   // Call the function to join the network using the code and current user.
+//   await joinNetworkWithCode(networkCode, user);
+// });
+
+// Updated join button click handler
+joinBtn.addEventListener("click", async () => {
+    const networkCode = document.getElementById("networkCode").value.trim();
+  
+    if (networkCode === "") {
+      alert("Please enter a network code.");
+      return;
+    }
+  
+    const user = firebase.auth().currentUser;
+    if (!user) {
+      alert("You need to be logged in to join a network.");
+      return;
+    }
+  
+    // Call the join network function
+    await joinNetworkWithCode(networkCode, user);
+  });
 
 //function that generates a random code
 function generateRandomCode(length) {
