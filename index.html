@@ -66,13 +66,13 @@
                         <img src="./images/create-svgrepo-com.svg" width="20" alt="">
                         <span>Create a network</span>
                     </div>
-                    <div class="alignIcons" style="margin: auto;">
+                    <div class="alignIcons"  style="margin: auto;">
                         <img src="./images/settings (1).svg" width="25" alt="">
                         <span>Configure network</span>
                     </div>
                 </div>
                 <div style="display: flex; flex-direction: column;">
-                    <div class="alignIcons">
+                    <div class="alignIcons" id="JoinNetwork">
                         <img src="./images/join-class.svg" width="25">
                         <span>Join a network</span>
                     </div>
@@ -150,6 +150,18 @@
             </div>
         </div>
     </div>
+
+    <div id="popupJoin" class="popup-container">
+        <div class="popup-content">
+            <h2>Join a Network</h2>
+            <input type="text" id="networkCode" placeholder="Enter network code">
+            <div class="popup-buttons">
+                <button id="joinBtn">Join</button>
+                <button id="cancelJoinBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <script src="./scripts/firebaseAPI_BBY22.js"></script>
     <script src="./scripts/map.js"></script>
     <script src="./scripts/popup.js"></script>

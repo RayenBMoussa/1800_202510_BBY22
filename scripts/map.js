@@ -1,6 +1,4 @@
 function showMap() {
-
-    // Replace with your own Mapbox access token
     // mapboxgl.accessToken = 'pk.eyJ1IjoidG9ueXhjaGVuIiwiYSI6ImNtOGdjMGYydTBsdjcyaW9pa2xqNWw3ODUifQ.zNywMAWcRkug0iD3Aej6hw';
 
     // Default location (YVR city hall) 49.26504440741209, -123.11540318587558
