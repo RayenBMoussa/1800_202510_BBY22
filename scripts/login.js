@@ -5,6 +5,7 @@ const successMsg = localStorage.getItem("msg");
 const msgHolder = document.getElementById("successMsg");
 const email = document.getElementById("email");
 const errorHolder = document.getElementById("errorMsg");
+errorHolder.style.display = "none";
 if (successMsg) {
   msgHolder.innerHTML = successMsg;
   localStorage.removeItem("msg"); // Remove message immediately to prevent persistence
@@ -37,7 +38,7 @@ submit.addEventListener("click", function (event) {
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      window.location.href = "index.html"
+      window.location.href = "index.html";
       // ...
     })
     .catch((error) => {
