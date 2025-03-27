@@ -16,6 +16,8 @@ var auth = firebase.auth();
 var db = firebase.firestore();
 
 // Get elements
+
+// Create Network pop up
 const popup = document.getElementById("popup");
 const createNetworkButton = document.querySelector("#createNetwork"); // Target "Create a network"
 const createBtn = document.getElementById("createBtn");
@@ -32,6 +34,8 @@ cancelBtn.addEventListener("click", () => {
 });
 
 // Get elements
+
+//join a network pop up.
 const popupJoin = document.getElementById("popupJoin");
 const joinNetworkButton = document.querySelector("#JoinNetwork"); // Target "Create a network"
 const joinBtn = document.getElementById("joinBtn");
