@@ -32,20 +32,47 @@ document.getElementById("submit").addEventListener("click", function (event) {
   var password = document.getElementById("password").value;
   var fullName = document.getElementById("fullname").value;
 
-  auth.createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      return db.collection("Users").doc(user.uid).set({
-        email: user.email,
-        name: fullName,
-        code: "1234"
-      })
-    })
-    .then(() => {
-      localStorage.setItem("msg", "Account created successfully!!!");
-      window.location.href = "login.html"; // Redirect to login page
-    })
-    .catch((error) => {
-      console.log("Error signing up:", error.message);
-    });
+  // user's geolocation
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        // user creation with Firebase Auth
+        auth.createUserWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+
+            // Save user data to Firestore
+            return db.collection("Users").doc(user.uid).set({
+              email: user.email,
+              name: fullName,
+              geoLocation: {
+                lat: lat,
+                lng: lng
+              },
+              preferences: {}, // Placeholder for future use
+              status: "active", // Default status
+              myNetwork: null, // Will be updated when the user joins a group
+              networks: []
+            });
+          })
+          .then(() => {
+            localStorage.setItem("msg", "Account created successfully!!!");
+            window.location.href = "login.html"; // Redirect to login page
+          })
+          .catch((error) => {
+            console.log("Error signing up:", error.message);
+          });
+      },
+      (error) => {
+        console.error("Geolocation error:", error);
+        alert("Could not retrieve location. Please enable location services.");
+      }
+    );
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
 });
+

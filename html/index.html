@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>IntiMo</title>
+    <meta name="comp1800 template" content="My 1800 App">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Library CSS CDN go here -->
+    <!-- Boostrap Library JS CDN  go here -->
+
+    <!-- Other libraries go here -->
+
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="../styles/style.css">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <div id="header">
+        <img style="height:3em;" src="../images/intimoLogo.png" alt="">
+        <div id="header-icons">
+            <img src="../images/Vector.svg" width="40" alt="vector">
+            <img src="../images/notification.svg" width="40" alt="notification">
+        </div>
+    </div>
+    <div id="middle">
+        <div id="banner">
+            <!-- <div id="logo">
+                <img src="./images/maps.png">
+            </div> -->
+
+            <div class="mapContainer">
+                <div id="map"></div>
+            </div>
+            <div class="underMap">
+                <div id="mapText">
+                    Consult the map
+                </div>
+                <div>
+                    <p>&rarr;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="nav">
+        <div id="home" class="navItems">
+            <img src="../images/house.svg" width="40" alt="House Icon">
+            <span>Home</span>
+        </div>
+        <div id="group" class="navItems">
+            <a href="network.html">
+                <img src="../images/group.svg" width="40" alt="Group Icon">
+                <span>Networks</span>
+            </a>
+        </div>
+        <div id="preferences" class="navItems">
+            <img src="../images/chat.svg" width="40" alt="Preferences Icon">
+            <span>Chat</span>
+        </div>
+        <div id="chat" class="navItems">
+            <img src="../images/settings.svg" width="50" alt="Chat Icon">
+            <span>Settings</span>
+        </div>
+    </footer>
+
+
+    <!-- Navigation bar goes here -->
+
+
+    <!-- Navigation (header) bar goes here -->
+
+
+
+    <!-- Navigation (footer) bar goes here -->
+
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+    <!-- Stuff for body goes here -->
+
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+
+    <!-- Link to scripts of your own -->
+    <!-- <script src="./scripts/script.js"></script> -->
+    
+
+    <script src="../scripts/firebaseAPI_BBY22.js"></script>
+    <script src="../scripts/map.js"></script>
+
+
+
+
+</body>
+
+</html>

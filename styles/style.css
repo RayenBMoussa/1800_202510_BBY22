@@ -115,6 +115,7 @@
     aspect-ratio: 1/1;
     width: fit-content;
     margin: auto;
+    justify-content: space-around;
   }
 
   .msg {
@@ -134,15 +135,23 @@
     background: linear-gradient(to bottom right, #ee8b4d, #020024);
     padding: 0.5em;
     margin-top: auto;
+    align-items: center;
   }
 
   .navItems {
     cursor: pointer;
     padding: 0.2em;
+    transition: all .2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
   }
 
   .navItems:hover {
-    background-color: rgb(231, 229, 229);
+    background-color: rgba(110, 88, 59, 0.5);
+    border-radius: 50%;
+    transform: scale(1.1);
   }
 
   #redCircle {
@@ -206,5 +215,12 @@
   #cancelBtn {
     background: #f44336;
     color: white;
+  }
+  .navItems a{
+    color: black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
