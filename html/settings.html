@@ -1,11 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/settings.css">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <div id="header">
+        <img style="height:3em;" src="../images/intimoLogo.png" alt="">
+        <div id="header-icons">
+            <img src="../images/Vector.svg" width="40" alt="vector">
+            <img src="../images/notification.svg" width="40" alt="notification">
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="profile">
+            <div id="userInitial">
+                <span id="userName_Settings"></span>
+            </div>
+            <div id="personalInfo">
+                <div id="nameInfo"></div>
+                <div id="emailInfo"></div>
+            </div>
+        </div>
+        <button id="logout">Log Out</button>
+
+    </div>
+
+
+
+    <footer class="nav">
+        <div id="home" class="navItems">
+            <a href="index.html">
+                <img src="../images/house.svg" width="40" alt="House Icon">
+                <span>Home</span>
+            </a>
+        </div>
+        <div id="group" class="navItems">
+            <a href="network.html">
+                <img src="../images/group.svg" width="40" alt="Group Icon">
+                <span>Networks</span>
+            </a>
+        </div>
+        <div id="preferences" class="navItems">
+            <img src="../images/chat.svg" width="40" alt="Preferences Icon">
+            <span>Chat</span>
+        </div>
+        <div id="chat" class="navItems">
+            <a href="settings.html">
+                <img src="../images/settings.svg" width="50" alt="Chat Icon">
+                <span>Settings</span>
+            </a>
+        </div>
+    </footer>
+    <script type="module" src="../scripts/settings.js" defer></script>
 </body>
+
 </html>

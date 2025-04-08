@@ -139,4 +139,3 @@ firebase.auth().onAuthStateChanged(user => {
         showMap(user.uid);
     }
 });
-

@@ -150,7 +150,7 @@
 
   .navItems:hover {
     background-color: rgba(110, 88, 59, 0.5);
-    border-radius: 50%;
+    border-radius: 20%;
     transform: scale(1.1);
   }
 
@@ -223,4 +223,37 @@
     flex-direction: column;
     align-items: center;
   }
+  /* Hide everything by default */
+#networkUI, #loadingSpinner {
+  display: none;
+}
+
+/* Only show loading spinner if no network exists */
+body:not(.network-exists) #loadingSpinner {
+  display: block;
+}
+
+/* Only show network UI if network exists */
+body.network-exists #networkUI {
+  display: block;
+}
+.interest-filter {
+  margin: 1em auto;
+  padding: 0.5em;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.interest-filter select {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
 }

@@ -46,14 +46,19 @@
             <div class="mapContainer">
                 <div id="map"></div>
             </div>
-            <div class="underMap">
-                <div id="mapText">
-                    Consult the map
-                </div>
-                <div>
-                    <p>&rarr;</p>
-                </div>
+            <div class="interest-filter">
+                <label for="interestFilter">Filter by interest:</label>
+                <select id="interestFilter" class="form-select">
+                    <option value="all">All</option>
+                    <option value="sports">Sports</option>
+                    <option value="anime">Anime</option>
+                    <option value="politics">Politics</option>
+                    <option value="economy">Economy</option>
+                    <option value="dancing">Dancing</option>
+                    <option value="singing">Singing</option>
+                </select>
             </div>
+            
         </div>
     </div>
     <footer class="nav">
@@ -72,8 +77,10 @@
             <span>Chat</span>
         </div>
         <div id="chat" class="navItems">
-            <img src="../images/settings.svg" width="50" alt="Chat Icon">
-            <span>Settings</span>
+            <a href="settings.html">
+                <img src="../images/settings.svg" width="50" alt="Chat Icon">
+                <span>Settings</span>
+            </a>
         </div>
     </footer>
 
@@ -99,7 +106,7 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-    
+
 
     <script src="../scripts/firebaseAPI_BBY22.js"></script>
     <script src="../scripts/map.js"></script>
