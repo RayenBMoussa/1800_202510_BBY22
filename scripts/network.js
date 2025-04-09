@@ -69,7 +69,7 @@ async function checkUserNetwork() {
       });
 
       createNetworkButton.disabled = true;
-      createNetworkButton.textContent = "Network Created";
+      createNetworkButton.textContent = "Network code generated";
     }
   } catch (error) {
     console.error("Error checking user network:", error);

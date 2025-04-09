@@ -2,34 +2,21 @@
 <html lang="en">
 
 <head>
-    <title>IntiMo</title>
-    <meta name="comp1800 template" content="My 1800 App">
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap Library CSS CDN go here -->
-    <!-- Boostrap Library JS CDN  go here -->
-
-    <!-- Other libraries go here -->
-
-    <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="../styles/style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-
+    <link rel="stylesheet" href="../styles/style.css">
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
-
 </head>
 
 <body>
-
     <div id="header">
         <img style="height:3em;" src="../images/intimoLogo.png" alt="">
         <div id="header-icons">
@@ -37,34 +24,20 @@
             <img src="../images/notification.svg" width="40" alt="notification">
         </div>
     </div>
-    <div id="middle">
-        <div id="banner">
-            <!-- <div id="logo">
-                <img src="./images/maps.png">
-            </div> -->
-
-            <div class="mapContainer">
-                <div id="map"></div>
-            </div>
-            <div class="interest-filter">
-                <label for="interestFilter">Filter by interest:</label>
-                <select id="interestFilter" class="form-select">
-                    <option value="all">All</option>
-                    <option value="sports">Sports</option>
-                    <option value="anime">Anime</option>
-                    <option value="politics">Politics</option>
-                    <option value="economy">Economy</option>
-                    <option value="dancing">Dancing</option>
-                    <option value="singing">Singing</option>
-                </select>
-            </div>
-            
+    <div id="chatContainer" style="display: none;">
+        <div id="chatMessages" style="height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
+            <!-- Messages will appear here -->
         </div>
+        <input type="text" id="chatInput" placeholder="Type a message..." />
+        <button id="sendMessageBtn">Send</button>
     </div>
     <footer class="nav">
+
         <div id="home" class="navItems">
-            <img src="../images/house.svg" width="40" alt="House Icon">
-            <span>Home</span>
+            <a href="index.html">
+                <img src="../images/house.svg" width="40" alt="House Icon">
+                <span>Home</span>
+            </a>
         </div>
         <div id="group" class="navItems">
             <a href="network.html">
@@ -85,14 +58,7 @@
             </a>
         </div>
     </footer>
-
-
-    <script src="../scripts/firebaseAPI_BBY22.js"></script>
-    <script type="module" src="../scripts/map.js"></script>
-
-
-
-
+    <script src="../scripts/chat.js" defer></script>
 </body>
 
 </html>

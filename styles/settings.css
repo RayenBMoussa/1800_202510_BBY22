@@ -36,7 +36,7 @@
     display: flex;
     flex-direction: column;
     padding: 1em;
-    justify-content: space-between;
+    gap: 1em;
 }
 #profile{
     display: flex;
@@ -53,4 +53,42 @@
 }
 #emailInfo{
     font-size: small;
+}
+
+#settings{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    background-color: rgb(241, 207, 159);
+    padding: 2em;
+    border-radius: 1em;
+}
+
+.settingItems{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all .2s ease-in-out; 
+}
+.settingItems:hover{
+    transform: scale(1.1);
+}
+.subItems{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+#logout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 0.7em;
+    background-color: rgb(241, 207, 159);
+    border:rgb(241, 207, 159) ;
+    border-radius: 0.5em;
+    width: 100%;
+    cursor: pointer;
 }

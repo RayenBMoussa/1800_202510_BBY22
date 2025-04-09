@@ -50,7 +50,7 @@ function showMap(userId) {
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [coords.lng, coords.lat],
-            zoom: 10
+            zoom: 11
         });
     
         // Store the map globally
@@ -175,30 +175,43 @@ async function loadUsersFromConnectedNetworks(map, currentUserId) {
 
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
-        showMap(user.uid);
+        const currentUserId = user.uid;
+        showMap(currentUserId);
+
         document.getElementById("interestFilter").addEventListener("change", function () {
             const selectedInterest = this.value;
-        
+
             for (const userId in userMarkers) {
                 const { marker, interest } = userMarkers[userId];
-                console.log(`Filter: "${selectedInterest}", User: "${interest}"`);
-
-                // Determine color based on interest match
                 const isMatch = selectedInterest === "all" || interest === selectedInterest;
-        
-                // Remove and re-add marker with updated color
+
                 const lngLat = marker.getLngLat();
                 marker.remove();
-        
+
                 const newMarker = new mapboxgl.Marker({ color: isMatch ? "red" : "gray" })
                     .setLngLat(lngLat)
-                    .setPopup(marker.getPopup()) // reuse the popup
+                    .setPopup(marker.getPopup())
                     .addTo(window.globalMap);
-                // Update reference
                 userMarkers[userId].marker = newMarker;
             }
+
+           
+            if (selectedInterest !== "all") {
+                const selectedUsers = Object.keys(userMarkers).filter(
+                    userId => userMarkers[userId].interest === selectedInterest
+                );
+
+                if (selectedUsers.length > 0) {
+                    const encodedIds = encodeURIComponent(JSON.stringify(selectedUsers));
+                    window.location.href = `chat.html?userId=${currentUserId}&selectedUsers=${encodedIds}&interest=${selectedInterest}`;
+                } else {
+                    console.log("No matching users for selected interest.");
+                }
+                
+                
+            }
         });
-        
     }
 });
+
 
