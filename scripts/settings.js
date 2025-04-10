@@ -49,7 +49,7 @@ document.getElementById("logout").addEventListener("click", () => {
     firebase.auth().signOut()
         .then(() => {
             console.log("User signed out.");
-            // Optional: redirect to login page
+            // redirect to login page
             window.location.href = "login.html"; 
         })
         .catch((error) => {
@@ -63,7 +63,7 @@ firebase.auth().onAuthStateChanged((user) => {
         displayUserInfoFromAuth();
     } else {
         console.log("No user logged in");
-        // Optional: redirect to login page
+        //redirect to login page
     }
 });
 

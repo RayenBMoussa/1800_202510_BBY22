@@ -69,18 +69,18 @@ async function checkUserNetwork() {
       });
 
       createNetworkButton.disabled = true;
-      createNetworkButton.textContent = "Network code generated";
+      createNetworkButton.textContent = "Network group code generated";
     }
   } catch (error) {
     console.error("Error checking user network:", error);
   }
 }
 
-// NEW: Add loading state management
-const networkUI = document.getElementById("networkUI"); // You'll need to add this container in your HTML
-const loadingSpinner = document.getElementById("loadingSpinner"); // Add this element too
+// loading state management
+const networkUI = document.getElementById("networkUI"); 
+const loadingSpinner = document.getElementById("loadingSpinner"); 
 
-// NEW: Initialize UI in loading state
+// Initialize UI in loading state
 function initUI() {
   if (networkUI) networkUI.style.display = "none";
   if (loadingSpinner) loadingSpinner.style.display = "block";
@@ -88,16 +88,16 @@ function initUI() {
   createNetworkButton.disabled = true;
 }
 
-// NEW: Show UI when ready
+// Showing UI when ready
 function showUI() {
   if (loadingSpinner) loadingSpinner.style.display = "none";
   if (networkUI) networkUI.style.display = "block";
 }
 
-// Initialize UI state
+// Initializing UI state
 initUI();
 
-// MAIN AUTH STATE LISTENER - This is the core fix
+
 firebase.auth().onAuthStateChanged(async (user) => {
   if (user) {
     try {
@@ -110,7 +110,7 @@ firebase.auth().onAuthStateChanged(async (user) => {
   showUI();
 });
 
-// IMPROVED Network Status Check
+// Network Status Check
 async function checkNetworkStatus() {
   const user = firebase.auth().currentUser;
   if (!user) return;
@@ -148,13 +148,13 @@ async function checkNetworkStatus() {
     }
   } catch (error) {
     console.error("Error checking network status:", error);
-    // Fail safely by allowing network creation
+    // Failing safely by allowing network creation
     createBtn.disabled = false;
     createNetworkButton.disabled = false;
   }
 }
 
-// Rest of your existing functions remain the same, but I'll include the important ones:
+
 
 // Create Network Button Click Handler
 createBtn.addEventListener("click", async () => {
@@ -172,7 +172,7 @@ createBtn.addEventListener("click", async () => {
   }
 
   try {
-    // Verify again right before creation
+    // Verifying right before creation
     const querySnapshot = await db.collection("networks")
       .where("owner", "==", user.uid)
       .get();
@@ -194,7 +194,7 @@ createBtn.addEventListener("click", async () => {
       code: networkCode,
     });
 
-    // Update all necessary data
+    // Updating all necessary data
     await db.collection("Users").doc(user.uid).update({
       myNetwork: networkRef.id
     });
@@ -205,7 +205,7 @@ createBtn.addEventListener("click", async () => {
       joinedAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
-    // Update UI and storage
+    // Updating UI and storage
     localStorage.setItem("networkCreated", "true");
     localStorage.setItem("networkCode", networkCode);
     document.querySelector("#numberNetworks span:first-child").textContent = networkCode;
@@ -221,15 +221,9 @@ createBtn.addEventListener("click", async () => {
   }
 });
 
-// Rest of your existing functions (joinNetworkWithCode, generateRandomCode, sendEmail, etc.)
-// ... keep them exactly as they were ...
 
-// Rest of your existing functions (joinNetworkWithCode, generateRandomCode, sendEmail, etc.)
-// ... keep them exactly as they were ...
 async function updateUserNetworks(networkId, user) {
   try {
-    // Using set with merge:true ensures that the document is created if it doesn't exist,
-    // and the 'myNetworks' field is added (or updated) using arrayUnion.
     await db.collection("Users").doc(user.uid).set(
       {
         myNetworks: firebase.firestore.FieldValue.arrayUnion(networkId)
@@ -256,14 +250,14 @@ async function joinNetworkWithCode(networkCode, user) {
       return;
     }
 
-    // For each matching network (usually there is only one), update the network and user documents.
+    // For each matching network, we update the network and user documents.
     querySnapshot.forEach(async (docSnapshot) => {
-      // Update the network document by adding the user's UID to the memberIds array.
+      // Updating the network document by adding the user's UID to the memberIds array.
       await db.collection("networks").doc(docSnapshot.id).update({
         memberIds: firebase.firestore.FieldValue.arrayUnion(user.uid),
       });
 
-      // Optionally, add the joiner to the network's members subcollection with additional info.
+      // adding the joiner to the network's members subcollection with additional info.
       await db
         .collection("networks")
         .doc(docSnapshot.id)
@@ -275,7 +269,7 @@ async function joinNetworkWithCode(networkCode, user) {
           joinedAt: firebase.firestore.FieldValue.serverTimestamp(),
         });
 
-      // Update the user's document: add this network's document ID to the myNetworks field.
+      // adding this network's document ID to the myNetworks field.
       await updateUserNetworks(docSnapshot.id, user);
 
       alert("Joined network successfully!");
@@ -301,7 +295,7 @@ joinBtn.addEventListener("click", async () => {
     return;
   }
 
-  // Call the join network function
+  // Calling the join network function
   await joinNetworkWithCode(networkCode, user);
 });
 
@@ -327,21 +321,3 @@ function generateRandomCode(length) {
 
 
 
-// // Show the popup when clicking "Create a network"
-// createNetworkButton.addEventListener("click", () => {
-//   popup.style.display = "flex";
-// });
-
-// // Close popup on cancel
-// cancelBtn.addEventListener("click", () => {
-//   popup.style.display = "none";
-// });
-//   // Show the popup when clicking "Create a network"
-//   joinNetworkButton.addEventListener("click", () => {
-//     popupJoin.style.display = "flex";
-//   });
-
-//   // Close popup on cancel
-//   cancelJoinBtn.addEventListener("click", () => {
-//     popupJoin.style.display = "none";
-//   });

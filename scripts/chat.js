@@ -57,7 +57,7 @@ auth.onAuthStateChanged(user => {
             };
         }
     } else {
-        // User is not authenticated, handle accordingly
+        // User is not authenticated
         console.log("User not authenticated");
     }
 });
@@ -72,10 +72,10 @@ async function createChatGroup(senderId, selectedUsers, selectedInterest) {
 
         const membersRef = chatRef.collection("members");
 
-        // Ensure the current user is also added to the group
-        selectedUsers.push(senderId); // Add the current user to the members list
+        // Add the current user to the members list
+        selectedUsers.push(senderId);
 
-        // Add all members, ensure this is awaited correctly
+        // Add all members, ensuring this is awaited correctly
         const memberPromises = selectedUsers.map(async (memberId) => {
             await membersRef.doc(memberId).set({
                 userId: memberId,
@@ -83,20 +83,20 @@ async function createChatGroup(senderId, selectedUsers, selectedInterest) {
             });
         });
 
-        await Promise.all(memberPromises); // Wait for all members to be added
+        await Promise.all(memberPromises); 
 
         console.log("Chat group created successfully");
 
-        // Store chatId and senderId in localStorage
+        // Saving chatId and senderId in localStorage
         storeChatInfo(chatRef.id, senderId);
 
-        // Show chat UI
+       
         document.getElementById("chatContainer").style.display = "block";
 
-        // Listen to messages
+       
         listenForMessages(chatRef.id);
 
-        // Navigate to chat page with chatId in URL
+        // Navigating to chat page with url
         window.location.href = `chat.html?chatId=${chatRef.id}`;
 
     } catch (error) {
@@ -107,13 +107,13 @@ async function createChatGroup(senderId, selectedUsers, selectedInterest) {
 function sendMessage(chatId, senderId, text) {
     const db = firebase.firestore();
 
-    // Fetch the username before sending the message
+    // Fetching the username before sending the message
     db.collection("Users").doc(senderId).get().then(doc => {
         const senderUsername = doc.data().name;
 
         const message = {
             senderId,
-            senderUsername, // Include the username in the message
+            senderUsername, 
             text,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             type: "text"
@@ -145,7 +145,7 @@ function listenForMessages(chatId) {
                     msgElem.textContent = `${message.senderUsername}: ${message.text}`;
                     messagesDiv.appendChild(msgElem);
 
-                    // Auto scroll to bottom
+                    // Auto scroll 
                     messagesDiv.scrollTop = messagesDiv.scrollHeight;
                 }
             });
@@ -169,11 +169,11 @@ if (!chatId && userId && selectedUsers.length > 0 && selectedInterest) {
     // Create the group only if it's not already created
     createChatGroup(userId, selectedUsers, selectedInterest);
 } else if (chatId) {
-    // Retrieve chatId and userId from localStorage when navigating back to the chat page
+    // Retrieve chatId and userId from localStorage
     const { chatId, userId } = getStoredChatInfo();
     if (chatId && userId) {
         document.getElementById("chatContainer").style.display = "block";
-        // Already in chat, listen for messages
+        //if in chat, listening to messages
         listenForMessages(chatId);
     } else {
         console.error("No chatId or userId found in localStorage");
